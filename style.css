@@ -1,0 +1,29 @@
+.cell{
+	height: 100px;
+	width: 100px;
+	border: 3px solid black;
+	float: left;
+
+}
+
+.cellclick{
+	background-image: url('images/redX.png');
+	background-size: 100%;
+}
+.cellclick2{
+	background-image: url('images/redO.png');
+	background-size: 100%;
+}
+.rows {
+	clear: both;
+}
+
+h1{
+	text-align: center;	
+}
+#board{
+	text-align: center;
+	margin: 0 auto;
+	background-color: "blue";
+	width: 350px;
+}
