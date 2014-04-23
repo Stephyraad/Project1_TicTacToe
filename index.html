@@ -7,7 +7,7 @@
 
 </head>
 <body  x-ng-controller="gameController">
-	<h1>TIC TAC TOE</h1>
+	<h1 id="gameTitle">TIC TAC TOE</h1>
 	<div id="board">
 		<div class="rows" x-ng-repeat="r in rows track by $index">
 			<div class="cell" x-ng-click="check($parent.$index,$index)"  x-ng-repeat= "c in r track by $index" x-ng-class="{cellclick: c =='X',cellclick2: c=='O'}">{{c}}
