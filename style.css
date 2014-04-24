@@ -1,6 +1,38 @@
+/* WINNING BACKGROUND */
+div	img{
+	margin-top: 125px;
+	width: 500px;
+	margin-left: 30px;
+}
+
 #winningback{
 	display: none;
 	background-color: black;
+	width: 2000px;
+	height: 1000px;
+	padding:0px;
+	z-index: 0px;
+	position: fixed;	
+	margin: 0px;
+
+}
+
+.winclass{
+	color: #6FFF00;
+	font-family: Audiowide;
+	font-size: 100px;
+	text-shadow: 5px 5px 5px #6FFF00;
+	float: left;
+	padding-left: 200px;
+	padding-top: 250px;
+	margin: 0px;
+	
+}
+
+/* END OF WINNING CSS */
+
+#alien{
+	margin:200px;
 }
 
 
@@ -55,7 +87,9 @@ h1{
 
 }
 
-
+/* fix set timeout
+fix black background
+remove x and o's
 
 
 

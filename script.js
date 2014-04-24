@@ -23,20 +23,22 @@ function gameController($scope){
 		}
 	}// end of check function
 
+	function timeOut(){
+		document.getElementById("winningback").style.display="inline-block";
+	}
 
 		function matchrow(rowNum){
 			console.log($scope.rows[rowNum]);
 			if ($scope.rows[rowNum][0]==$scope.rows[rowNum][1] && $scope.rows[rowNum][1]==$scope.rows[rowNum][2]){ 
 					console.log("it works");
-					setTimeout(function() {winningback();}, 1200);
-					document.getElementById("winningback").style.display="block";
+					window.setTimeout(timeOut, 1200); //WINNING BACKGROUND
 				}
 			}//end of function matchrow
 
 		function matchcol(colNum){
-		if ($scope.rows[0][colNum]==$scope.rows[1][colNum] && $scope.rows[1][colNum]==$scope.rows[2][colNum]){
-			console.log("it works");
-			alert("You Win2");
+			if ($scope.rows[0][colNum]==$scope.rows[1][colNum] && $scope.rows[1][colNum]==$scope.rows[2][colNum]){
+					console.log("it works");
+					window.setTimeout(timeOut, 1200); //WINNING BACKGROUND
 				}
 			}//end of matchcol
 
@@ -44,10 +46,10 @@ function gameController($scope){
 		function matchDiag(){
 		//var x=false;
 		if($scope.rows[0][0]!=='' && $scope.rows[0][0]== $scope.rows[1][1] && $scope.rows[1][1]==$scope.rows[2][2]){
-			alert("You Win3") ;
+			window.setTimeout(timeOut, 1200); //WINNING BACKGROUND
 			}
 		else if ($scope.rows[2][0]!=='' && $scope.rows[2][0]==$scope.rows[1][1] && $scope.rows[1][1]==$scope.rows[0][2]){
-			alert("You Win4");
+			window.setTimeout(timeOut, 1200); //WINNING BACKGROUND
 			}	
 		}//end of matchdiag
 	}
