@@ -1,3 +1,10 @@
+#winningback{
+	display: none;
+	background-color: black;
+}
+
+
+
 body{
 	background-image: url('images/background.jpg');
 	background-size: 100%;

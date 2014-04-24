@@ -9,14 +9,15 @@
 </head>
 <body  x-ng-controller="gameController">
 	<h1 id="gameTitle">TIC TAC TOE</h1>
-	<div id="board">
+	<div  id="board">
 		<div class="rows" x-ng-repeat="r in rows track by $index">
 			<div class="cell" x-ng-click="check($parent.$index,$index)"  x-ng-repeat= "c in r track by $index" x-ng-class="{cellclick: c =='X',cellclick2: c=='O'}">{{c}}
 			</div>
 		</div>
-		<div id="winningCSS">
-		</div>
 	</div>
 
+<div id="winningback">
+	<a href="http://www.animateit.net"> <img src="http://www.animateit.net/data/media/199/ufo008.gif" border="0" alt="UFO Spaceship from AnimateIt.net" /> </a>
+</div>
 </body>
 </html>
