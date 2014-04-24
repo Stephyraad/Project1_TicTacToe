@@ -32,7 +32,7 @@ body{
 	background-size: 100%;
 }
 .cellclick2{
-	background-image: url('images/redO.png');
+	background-image: url('images/neonO.png');
 	background-size: 100%;
 }
 .rows {
@@ -41,8 +41,10 @@ body{
 
 h1{
 	text-align: center;	
-	font-size: 70px;
+	font-size: 80px;
 	color: white;
+	text-shadow: 2px 2px 2px #FFFF00;
+
 }
 
 
