@@ -1,3 +1,23 @@
+/* Loosing Background */
+#alienBack{
+	display: none;
+}
+/*End of loosing background*/
+
+/*Tie Background*/
+#tieBack{
+	display: none;
+	background-image: url("http://24.media.tumblr.com/f73894a20537762dbbe333617cab219a/tumblr_ms9imi3aHy1rv2z4yo2_r1_500.gif");
+	position:fixed;
+	width: 500px;
+	
+	
+
+
+}
+
+
+
 /* WINNING BACKGROUND */
 div	img{
 	margin-top: 125px;
@@ -17,7 +37,7 @@ div	img{
 
 }
 
-.winclass{
+.winningclass{
 	color: #6FFF00;
 	font-family: Audiowide;
 	font-size: 100px;
@@ -43,8 +63,8 @@ body{
 }
 
 .cell{
-	height: 135px;
-	width: 135px;
+	height: 95px;
+	width: 95px;
 	border: 6px solid #FFCCFF;
 	box-shadow: inset 0px 0px 6px 6px #FF00FF , 0px 0px 6px 6px #FF00FF ;
 	background-color: black;
@@ -54,9 +74,9 @@ body{
 #board{
 	text-align: center;
 	margin: 0 auto;
-	
-	width: 460px;
-	height: 460px;
+	margin-top: -20px;
+	width: 335px;
+	height: 335px;
 	border: 10px solid #fff;
 	padding-top: 20px;
 	padding-left: 20px;
@@ -80,7 +100,7 @@ body{
 
 h1{
 	text-align: center;	
-	font-size: 80px;
+	font-size: 70px;
 	color: white;
 	text-shadow: 5px 5px 5px #FFFF00;
 	font-family: Audiowide;
