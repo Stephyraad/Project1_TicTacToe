@@ -1,21 +1,74 @@
 
+//dependency injection FIREBASE
 
-function gameController($scope){
-	$scope.rows=[['','',''],['','',''],['','','']];	
-	var player= 0;
+var myGame = angular.module("TicTacToeApp", ["firebase"] );
+
+
+
+var playerNum;
+
+function gameController($scope, $firebase){
+	var ticTacRef = new Firebase("https://project1-tictactoe.firebaseio.com/");
+		
+
+///////////////////////////////////////////////////////////////////////
+//  START FIREBASE
+
+	var lastGame;
+			// Ask for all existing game info from firebase
+			ticTacRef.once('value', function(gamesSnapshot) {
+				// get the actual games data
+			  var games = gamesSnapshot.val();
+				if(games == null)
+				{
+					// No games at all, so make a new game -- As if we're Areg
+					lastGame = ticTacRef.push( {waiting: true} );
+					playerNum = 1;
+				}
+				else	// I do have at least one game out there...
+				{
+				  var keys = Object.keys(games);
+				  var lastGameKey = keys[ keys.length - 1 ];
+				  var lastGame = games[ lastGameKey ];
+					console.log("This person's game: " + lastGameKey);
+				  if(lastGame.waiting)
+				  {
+				  	// Currently someone is waiting -- Areg is there and we're Rocky
+				  	// Grab from Firebase its last game object
+				  	lastGame = ticTacRef.child(lastGameKey);
+				  	// Set a new game on this
+				  	lastGame.set( {waiting:false, moves: 0, player: 0, won: false, rows: [['','',''],['','',''],['','','']] } );
+				  	playerNum = 2;
+				  }
+				  else
+				  {
+				  	// Make a new game -- As if we're Areg
+						lastGame = ticTacRef.push( {waiting: true} );
+						playerNum = 1;
+				  }
+				}
+				// Attach the last game to what we're up to
+			  $scope.game = $firebase(lastGame);
+			});
+
+///  	END FIREBASE
+//////////////////////////////////////////////////////////////////////////////////////////////
+
+	//var player= 0;
 	var moves=0;
 	$scope.check=function(r,c){
-		if ($scope.rows[r][c]== ''){
+		if ($scope.game.rows[r][c]== ''){
 			if (player === 1) {
-			// console.log($scope.rows[r][c]);
-				$scope.rows[r][c]= 'X';
+			// console.log($scope.game.rows[r][c]);
+				$scope.game.rows[r][c]= 'X';
 			} 
 			else { 
-				$scope.rows[r][c]= 'O';
+				$scope.game.rows[r][c]= 'O';
 				console.log(r, c);
 			}
 			player = player%2 + 1;
 			moves++;
+			$scope.game.$save();
 			if (moves > 4) {
 				checkWin(r,c,player);
 			} 		
@@ -46,8 +99,8 @@ function gameController($scope){
 	
 
 			function matchrow(rowNum,player){
-					console.log($scope.rows[rowNum]);
-					if ($scope.rows[rowNum][0]==$scope.rows[rowNum][1] && $scope.rows[rowNum][1]==$scope.rows[rowNum][2]){ 
+					console.log($scope.game.rows[rowNum]);
+					if ($scope.game.rows[rowNum][0]==$scope.game.rows[rowNum][1] && $scope.game.rows[rowNum][1]==$scope.game.rows[rowNum][2]){ 
 							console.log("it works");
 							window.setTimeout(timeOut, 1200);
 							console.log( "Player " + player +" Wins!!!");
@@ -56,7 +109,7 @@ function gameController($scope){
 					}//end of function matchrow
 
 			function matchcol(colNum,player){
-					if ($scope.rows[0][colNum]==$scope.rows[1][colNum] && $scope.rows[1][colNum]==$scope.rows[2][colNum]){
+					if ($scope.game.rows[0][colNum]==$scope.game.rows[1][colNum] && $scope.game.rows[1][colNum]==$scope.game.rows[2][colNum]){
 							console.log("it works");
 							window.setTimeout(timeOut, 1200);
 							console.log( "Player " + player +" Wins!!!");
@@ -66,23 +119,19 @@ function gameController($scope){
 
 			function matchDiag(player){
 				//var x=false;
-				if($scope.rows[0][0]!=='' && $scope.rows[0][0]== $scope.rows[1][1] && $scope.rows[1][1]==$scope.rows[2][2]){
+				if($scope.game.rows[0][0]!=='' && $scope.game.rows[0][0]== $scope.game.rows[1][1] && $scope.game.rows[1][1]==$scope.game.rows[2][2]){
 					console.log("it works2");
 					window.setTimeout(timeOut, 1200);
 					console.log( "Player " + player +" Wins!!!");
 					 //WINNING BACKGROUND
 					}
-				else if ($scope.rows[2][0]!=='' && $scope.rows[2][0]==$scope.rows[1][1] && $scope.rows[1][1]==$scope.rows[0][2]){
+				else if ($scope.game.rows[2][0]!=='' && $scope.game.rows[2][0]==$scope.game.rows[1][1] && $scope.game.rows[1][1]==$scope.game.rows[0][2]){
 					console.log("it works3");
 					window.setTimeout(timeOut, 1200);
 					console.log( "Player " + player +" Wins!!!");
 					 //WINNING BACKGROUND
 					}	
 				}//end of matchdiag
-
-
-		
-
 	}//end of gameController
 
 	

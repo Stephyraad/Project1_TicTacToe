@@ -70,6 +70,7 @@ body{
 	border: 6px solid #FFCCFF;
 	box-shadow: inset 0px 0px 6px 6px #FF00FF , 0px 0px 6px 6px #FF00FF ;
 	background-color: black;
+	opacity: 0.8;
 	float: left;
 }
 
@@ -104,9 +105,16 @@ h1{
 	text-align: center;	
 	font-size: 70px;
 	color: white;
-	text-shadow: 5px 5px 5px #FFFF00;
+	text-shadow: 5px 5px 5px #993CF3;
 	font-family: Audiowide;
+	padding-top: 25px;
+	padding-bottom: 10px;
 
+}
+
+.cell:hover{
+	background-color: #993CF3; 
+	opacity: 0.6;
 }
 
 /* fix set timeout

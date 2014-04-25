@@ -1,10 +1,14 @@
-<html x-ng-app="">
+<html x-ng-app="TicTacToeApp">
 <head>
 	<title>TIC TAC TOE</title>
-	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular.min.js"></script>
-	<script type="text/javascript" src="script.js"></script>
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<link href='http://fonts.googleapis.com/css?family=Audiowide' rel='stylesheet' type='text/css'>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular.min.js"></script>
+  	<script src="https://cdn.firebase.com/v0/firebase.js"></script>
+  	<script src="https://cdn.firebase.com/libs/angularfire/0.6.0/angularfire.min.js"></script>
+  	<script type="text/javascript" src="script.js"></script>
+ 
+
 
 </head>
 <body  x-ng-controller="gameController">
@@ -19,7 +23,7 @@
 	<h1 id="gameTitle">TIC TAC SPACE</h1>
 
 	<div  id="board">
-		<div class="rows" x-ng-repeat="r in rows track by $index">
+		<div class="rows" x-ng-repeat="r in game.rows track by $index">
 			<div class="cell" x-ng-click="check($parent.$index,$index)"  x-ng-repeat= "c in r track by $index" x-ng-class="{cellclick: c =='X',cellclick2: c=='O'}">
 			</div>
 		</div>
