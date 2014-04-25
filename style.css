@@ -10,12 +10,14 @@
 	background-image: url("http://24.media.tumblr.com/f73894a20537762dbbe333617cab219a/tumblr_ms9imi3aHy1rv2z4yo2_r1_500.gif");
 	position:fixed;
 	width: 500px;
-	
-	
+}
+
+#restart {
+	display: none;
+	position: fixed;
 
 
 }
-
 
 
 /* WINNING BACKGROUND */
