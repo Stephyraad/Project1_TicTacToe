@@ -7,17 +7,22 @@
 /*Tie Background*/
 #tieBack{
 	display: none;
-	background-image: url("http://24.media.tumblr.com/f73894a20537762dbbe333617cab219a/tumblr_ms9imi3aHy1rv2z4yo2_r1_500.gif");
+	/*background-image: url("http://24.media.tumblr.com/f73894a20537762dbbe333617cab219a/tumblr_ms9imi3aHy1rv2z4yo2_r1_500.gif");*/
 	position:fixed;
 	width: 500px;
-}
-
-#restart {
-	display: none;
-	position: fixed;
-
+	background-color: #4D4DFF;
+	opacity: 0.6;
 
 }
+#tieBack2{
+	width: 400px;
+	height: 200px;
+	text-align: center;
+	background-color: #993CF3;
+}
+
+
+
 
 
 /* WINNING BACKGROUND */
@@ -70,7 +75,7 @@ body{
 	border: 6px solid #FFCCFF;
 	box-shadow: inset 0px 0px 6px 6px #FF00FF , 0px 0px 6px 6px #FF00FF ;
 	background-color: black;
-	opacity: 0.8;
+	opacity: 0.85;
 	float: left;
 }
 
