@@ -7,7 +7,7 @@ var myGame = angular.module("TicTacToeApp", ["firebase"] );
 
 var playerNum;
 
-function gameController($scope, $firebase){
+function gameController($scope, $timeout, $firebase){
 	var ticTacRef = new Firebase("https://project1-tictactoe.firebaseio.com/");
 		
 
@@ -91,7 +91,7 @@ function gameController($scope, $firebase){
 	}// end of check function
 
 			function timeOut(){
-				document.getElementById("winningbackO").style.display="inline-block";
+				document.getElementById("winningback").style.display="inline-block";
 				}//wining background
 			function timeOut2(){
 				document.getElementById("tieBack").style.display="inline-block";
@@ -108,7 +108,7 @@ function gameController($scope, $firebase){
 					console.log($scope.game.rows[rowNum]);
 					if ($scope.game.rows[rowNum][0]==$scope.game.rows[rowNum][1] && $scope.game.rows[rowNum][1]==$scope.game.rows[rowNum][2]){ 
 							console.log("it works");
-							window.setTimeout(timeOut, 1200);
+							$timeout(timeOut, 1200);
 							console.log( "player " + player +" Wins!!!");
 							 //WINNING BACKGROUND
 						}
@@ -117,7 +117,7 @@ function gameController($scope, $firebase){
 			function matchcol(colNum,player){
 					if ($scope.game.rows[0][colNum]==$scope.game.rows[1][colNum] && $scope.game.rows[1][colNum]==$scope.game.rows[2][colNum]){
 							console.log("it works");
-							window.setTimeout(timeOut, 1200);
+							$timeout(timeOut, 1200);
 							console.log( "player " + player +" Wins!!!");
 							 //WINNING BACKGROUND
 						}
@@ -127,13 +127,13 @@ function gameController($scope, $firebase){
 				//var x=false;
 				if($scope.game.rows[0][0]!=='' && $scope.game.rows[0][0]== $scope.game.rows[1][1] && $scope.game.rows[1][1]==$scope.game.rows[2][2]){
 					console.log("it works2");
-					window.setTimeout(timeOut2, 1200);
+					$timeout(timeOut2, 1200);
 					console.log( "Player " + player +" Wins!!!");
 					 //WINNING BACKGROUND
 					}
 				else if ($scope.game.rows[2][0]!=='' && $scope.game.rows[2][0]==$scope.game.rows[1][1] && $scope.game.rows[1][1]==$scope.game.rows[0][2]){
 					console.log("it works3");
-					window.setTimeout(timeOut2, 1200);
+					$timeout(timeOut2, 1200);
 					console.log( "Player " + player +" Wins!!!");
 					 //WINNING BACKGROUND
 					}	
