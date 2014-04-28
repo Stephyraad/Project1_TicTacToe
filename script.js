@@ -62,6 +62,8 @@ function gameController($scope, $timeout, $firebase){
 
 	//var $scope.game.player= 0;
 	// var $scope.game.moves=0;
+	
+
 	$scope.check=function(r,c){
 		if ($scope.game.rows[r][c]== ''){
 			if ($scope.game.player === 1) {
@@ -79,7 +81,8 @@ function gameController($scope, $timeout, $firebase){
 				checkWin(r,c,$scope.game.player);
 			} 		
 			else if ($scope.game.moves==9){
-				window.setTimeout(timeOut2(), 1200); //Tie BACKGROUND			
+				//$timeout(timeOut2, 1200);//Tie BACKGROUND		
+				checkTie($scope.game.player);// DOESNT WORK
 				//alert("its a tie");
 				console.log($scope.game.moves);
 			}
@@ -90,25 +93,34 @@ function gameController($scope, $timeout, $firebase){
 		}
 	}// end of check function
 
-			function timeOut(){
-				document.getElementById("winningback").style.display="inline-block";
-				}//wining background
-			function timeOut2(){
-				document.getElementById("tieBack").style.display="inline-block";
+	function timeOut(){
+		document.getElementById("winningback").style.display="inlIne-block";
+			}//wining background
+	
+	function timeOut2(){
+			document.getElementById("tieBack").style.display="inline-block";
 			}
+			
 
 			function checkWin(rowNum,colNum,player){
 				matchrow(rowNum, $scope.game.player);
 				matchcol(colNum, $scope.game.player);
 				matchDiag( $scope.game.player);
+				
 			};
+
+			function checkTie (player) {
+				matchTie($scope.game.player);
+			
+			};// DOESNT WORK
 	
 
 			function matchrow(rowNum,player){
 					console.log($scope.game.rows[rowNum]);
 					if ($scope.game.rows[rowNum][0]==$scope.game.rows[rowNum][1] && $scope.game.rows[rowNum][1]==$scope.game.rows[rowNum][2]){ 
 							console.log("it works");
-							$timeout(timeOut, 1200);
+							$timeout(timeOut, 1000);
+
 							console.log( "player " + player +" Wins!!!");
 							 //WINNING BACKGROUND
 						}
@@ -117,7 +129,7 @@ function gameController($scope, $timeout, $firebase){
 			function matchcol(colNum,player){
 					if ($scope.game.rows[0][colNum]==$scope.game.rows[1][colNum] && $scope.game.rows[1][colNum]==$scope.game.rows[2][colNum]){
 							console.log("it works");
-							$timeout(timeOut, 1200);
+							$timeout(timeOut, 1000);
 							console.log( "player " + player +" Wins!!!");
 							 //WINNING BACKGROUND
 						}
@@ -127,17 +139,23 @@ function gameController($scope, $timeout, $firebase){
 				//var x=false;
 				if($scope.game.rows[0][0]!=='' && $scope.game.rows[0][0]== $scope.game.rows[1][1] && $scope.game.rows[1][1]==$scope.game.rows[2][2]){
 					console.log("it works2");
-					$timeout(timeOut2, 1200);
+					$timeout(timeOut, 1200);
 					console.log( "Player " + player +" Wins!!!");
 					 //WINNING BACKGROUND
 					}
 				else if ($scope.game.rows[2][0]!=='' && $scope.game.rows[2][0]==$scope.game.rows[1][1] && $scope.game.rows[1][1]==$scope.game.rows[0][2]){
 					console.log("it works3");
-					$timeout(timeOut2, 1200);
+					$timeout(timeOut, 1200);
 					console.log( "Player " + player +" Wins!!!");
 					 //WINNING BACKGROUND
 					}	
 				}//end of matchdiag
+
+			function matchTie(player){ //DOESNT WORK
+				if ($scope.game.moves==9){
+				$timeout(timeOut2, 1000);
+				}// JUST ADDED
+			}//end of matchTie
 	}//end of gameController
 
 	

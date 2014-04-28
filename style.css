@@ -4,32 +4,11 @@
 }
 /*End of loosing background*/
 
-/*Tie Background*/
-#tieBack{
-	display: none;
-	/*background-image: url("http://24.media.tumblr.com/f73894a20537762dbbe333617cab219a/tumblr_ms9imi3aHy1rv2z4yo2_r1_500.gif");*/
-	position:fixed;
-	width: 500px;
-	background-color: #4D4DFF;
-	opacity: 0.6;
-
-}
-#tieBack2{
-	width: 400px;
-	height: 200px;
-	text-align: center;
-	background-color: #993CF3;
-}
-
-
-
-
-
 /* WINNING BACKGROUND */
-div	img{
+#winningback img{
 	margin-top: 125px;
 	width: 500px;
-	margin-left: 30px;
+	margin-left: 20px;
 }
 
 #winningback{
@@ -41,6 +20,7 @@ div	img{
 	z-index: 0px;
 	position: fixed;	
 	margin: 0px;
+	z-index: 1;
 
 }
 
@@ -67,6 +47,7 @@ div	img{
 body{
 	background-image: url('images/background.jpg');
 	background-size: 100%;
+	margin: 0px;
 }
 
 .cell{
@@ -121,6 +102,60 @@ h1{
 	background-color: #993CF3; 
 	opacity: 0.6;
 }
+
+
+
+/* TIE BACKGROUND */
+#tieBack{
+	display: none;
+	position: fixed;
+	z-index: 1;
+
+
+
+}
+#tieBack2{
+	
+	/*background-image: url("http://24.media.tumblr.com/f73894a20537762dbbe333617cab219a/tumblr_ms9imi3aHy1rv2z4yo2_r1_500.gif");*/
+	position:fixed;
+	width: 2000px;
+	height: 1000px;
+	background-color: blue;
+	margin: 0px;
+	opacity: 0.6;
+	z-index: -1;
+	position: fixed;
+}
+
+#tieBack3{
+	width: 400px;
+	height: 200px;
+	text-align: center;
+	display: inline-block;
+	background-color: blue;
+	border: solid black 5px;
+	
+	margin-left: 500px;
+	margin-top:250px;
+	opacity: none;
+	position: fixed;
+}
+
+#tieBack3 p{
+	text-align: center;
+	margin-top: 65px;
+	font-family: Audiowide;
+	font-size: 50px;
+	margin-bottom: 10px;
+	text-shadow: 5px 5px 5px #993CF3;
+	color:white;
+}
+
+#button{
+	padding: 50px;
+}
+
+/* END OF TIE BACKGROUNF */
 
 /* fix set timeout
 fix black background
